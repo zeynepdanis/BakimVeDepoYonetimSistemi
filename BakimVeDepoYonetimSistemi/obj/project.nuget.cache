@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "3Fdf1DpMkf2voIFp2fpaIedzU59aWIAIah6m0bcryTWCeLiX1duCBD5aahyrOUARcgExU+L/5/YCE4rDpJLAJg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\zeyne\\source\\repos\\BakimVeDepoYonetimSistemi\\BakimVeDepoYonetimSistemi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\zeyne\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\zeyne\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\zeyne\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\zeyne\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\zeyne\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\zeyne\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
