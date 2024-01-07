@@ -113,6 +113,33 @@ namespace BakimVeDepoYonetimSistemi.Repositories
 
 
 
+public string GetEmailForEkipUyeId(int ekipUyeId)
+{
+    try
+    {
+        var email = _context.BakimTalep
+            .Where(bt => bt.EkipUyeId == ekipUyeId)
+            .Join(
+                _context.EkipUye,
+                bt => bt.EkipUyeId,
+                eu => eu.EkipUyeId,
+                (bt, eu) => new { bt, eu }
+            )
+            .Join(
+                _context.KullanicilarTable,
+                temp => temp.eu.KullaniciId,
+                kt => kt.KullaniciId,
+                (temp, kt) => kt.Mail
+            )
+            .FirstOrDefault(); // Tek bir e-posta adresi döndürmek için FirstOrDefault()
+
+        return email;
+    }
+    catch (System.Exception)
+    {
+        throw;
+    }
+}
 
 
 

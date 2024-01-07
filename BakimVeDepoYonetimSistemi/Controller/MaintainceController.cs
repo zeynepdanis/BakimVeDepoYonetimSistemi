@@ -45,9 +45,11 @@ namespace BakimVeDepoYonetimSistemi.Controller
             if (rowsAffected >= 0)
             {
 
-
+                 var mail= _bakimTalepRepository.GetEmailForEkipUyeId(maintainceRequest.creatorId);
+                 var subject = "Bakım Talebi Oluşturuldu";
+                 var message = "Bakım talebiniz oluşturuldu. Talebiniz en kısa sürede değerlendirilecektir.";
                 // E-postayı gönderen methodu çağırma
-                SendEmail();
+                SendEmail(mail, subject, message);
 
 
                 return Ok(new { message = "created." });
@@ -203,19 +205,21 @@ namespace BakimVeDepoYonetimSistemi.Controller
         }
 
 
-        private void SendEmail()
+        private void SendEmail(string email, string subject, string message)
         {
             // Sender's email credentials
-            string senderEmail = "bakimvedepo@gmail.com";
-            string senderPassword = "vuag rzlk eish xnqu";
+          
+            // Sender's email credentials
+            string senderEmail = "bakimvedepo0@gmail.com";
+            string senderPassword = "ofdm yrwa gsng ceit";
 
             // Receiver's email
-            string receiverEmail = "danisss.zeynep@gmail.com";
+            string receiverEmail = email;
 
             // Create a new MailMessage
             MailMessage mail = new MailMessage(senderEmail, receiverEmail);
-            mail.Subject = "Test Email";
-            mail.Body = "This is a test email from .NET.";
+            mail.Subject = subject;
+            mail.Body = message;
 
             // Set up the SMTP client
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
