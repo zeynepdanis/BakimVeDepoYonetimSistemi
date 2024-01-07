@@ -26,6 +26,33 @@ namespace BakimVeDepoYonetimSistemi.Controller
             _ekipRepository = ekipRepository;
         }
 
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(User kullanici)
+        {
+            
+                
+                    try{
+                        var isregistered = _userRepository.AddUserAsync(kullanici);
+
+                        if(isregistered.Result)
+                        {
+                            return Ok("Kullanıcı eklendi");
+                        }
+                        else
+                        {
+                            return BadRequest("Kullanıcı eklenemedi");
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        return BadRequest("Kullanıcı eklenemedi");
+                    }
+            }
+
+
         [HttpPost("login")]
         public IActionResult Login(Login login)
         {
@@ -46,13 +73,14 @@ namespace BakimVeDepoYonetimSistemi.Controller
                     }
                     try
                     {
-                        var team = _ekipRepository.FindTeamNameById(teamMember.ekip_id);
+                        var team = _ekipRepository.FindTeamNameById(teamMember.EkipId);
                         if (team == null)
                         {
                             return BadRequest("Kullanıcı bulunamadı");
                         }
                         else
                         {
+                            login.password = _userRepository.HashPassword(login.password);
                             if (user.Parola == login.password)
                             {
                                 var response = new LoginResponse
@@ -68,9 +96,9 @@ namespace BakimVeDepoYonetimSistemi.Controller
                             }
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-
+                        Console.WriteLine(ex.Message);
                         return BadRequest("Kullanıcı bulunamadı");
                     }
 

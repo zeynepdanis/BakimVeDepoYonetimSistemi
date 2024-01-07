@@ -57,7 +57,11 @@ namespace BakimVeDepoYonetimSistemi.Repositories
 
         public User? GetUserByEmail(string email)
         {
-            var user = _context.KullanicilarTable.FirstOrDefault(u => u.Mail == email);
+
+            try {  
+
+
+           var user = _context.KullanicilarTable.FirstOrDefault(u => u.Mail == email);
 
             if (user == null)
             {
@@ -67,6 +71,14 @@ namespace BakimVeDepoYonetimSistemi.Repositories
             {
                 return user;
             }
+             }catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);   
+                return null;
+            }
+
+            
         }
 
         public string HashPassword(string password)
@@ -88,7 +100,32 @@ namespace BakimVeDepoYonetimSistemi.Repositories
 
 
         }
+         public User? GetUserById(int id)
+        {
 
+            try {  
+
+
+           var user = _context.KullanicilarTable.FirstOrDefault(u => u.KullaniciId == id);
+
+            if (user == null)
+            {
+                return null;
+            }
+            else
+            {
+                return user;
+            }
+             }catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);   
+                return null;
+            }
+
+            
+        }
+      
 
     }
 }

@@ -23,7 +23,7 @@ public class TeamMemberRepository
     {
             try
             {
-                return _context.EkipUye.FirstOrDefault(u => u.kullanici_id == userId);
+                return _context.EkipUye.FirstOrDefault(u => u.KullaniciId == userId);
             }
             catch (Exception ex)
             {

@@ -2,7 +2,7 @@
 {
     public class Team
     {
-        public int id { get; set; }
-        public string tanim { get; set; }
+        public int EkipId { get; set; }
+        public string Tanim { get; set; }
     }
 }

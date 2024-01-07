@@ -19,8 +19,22 @@ namespace BakimVeDepoYonetimSistemi.Repositories
         {
             try
             {
-                var team = _context.EkipTable.FirstOrDefault(t => t.id == Id);
-                return team?.tanim;
+                var team = _context.EkipTable.FirstOrDefault(t => t.EkipId == Id);
+                return team?.Tanim;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+          
+        }
+         public int? FindTeamIdByName(string name)
+        {
+            try
+            {
+                var team = _context.EkipTable.FirstOrDefault(t => t.Tanim == name);
+                return team?.EkipId;
             }
             catch (Exception)
             {
