@@ -1,5 +1,7 @@
 ﻿using BakimVeDepoYonetimSistemi.Model;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.Text;
 
@@ -58,27 +60,29 @@ namespace BakimVeDepoYonetimSistemi.Repositories
         public User? GetUserByEmail(string email)
         {
 
-            try {  
-
-
-           var user = _context.KullanicilarTable.FirstOrDefault(u => u.Mail == email);
-
-            if (user == null)
+            try
             {
+
+
+                var user = _context.KullanicilarTable.FirstOrDefault(u => u.Mail == email);
+
+                if (user == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return user;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
                 return null;
             }
-            else
-            {
-                return user;
-            }
-             }catch (Exception ex)
-            {
 
-                Console.WriteLine(ex.Message);   
-                return null;
-            }
 
-            
         }
 
         public string HashPassword(string password)
@@ -100,32 +104,52 @@ namespace BakimVeDepoYonetimSistemi.Repositories
 
 
         }
-         public User? GetUserById(int id)
+        public User? GetUserById(int id)
         {
 
-            try {  
-
-
-           var user = _context.KullanicilarTable.FirstOrDefault(u => u.KullaniciId == id);
-
-            if (user == null)
+            try
             {
+
+
+                var user = _context.KullanicilarTable.FirstOrDefault(u => u.KullaniciId == id);
+
+                if (user == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return user;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
                 return null;
             }
-            else
-            {
-                return user;
-            }
-             }catch (Exception ex)
-            {
 
-                Console.WriteLine(ex.Message);   
-                return null;
-            }
 
-            
         }
-      
+
+        public List<string> GetUserNameSurname()
+        {
+            try
+            {
+                List<string> names_1 = new List<string>();
+                var users =  _context.KullanicilarTable.ToList();
+                var names = users.Select(u => $"{u.Ad} {u.Soyad}").ToList();
+                names_1.AddRange(names);
+                return names_1;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+
 
     }
 }

@@ -30,6 +30,8 @@ builder.Services.AddDbContext<RepositoryContext>(options =>
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<TeamMemberRepository>();
 builder.Services.AddScoped<MaintenanceRepository>();
+builder.Services.AddScoped<AssetRepository>();
+builder.Services.AddScoped<JobOrderRepository>();
 builder.Services.AddScoped<TeamRepository>();
 builder.Services.AddAuthorization();
 builder.Services.AddControllers();

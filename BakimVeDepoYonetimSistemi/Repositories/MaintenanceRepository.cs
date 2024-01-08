@@ -169,6 +169,30 @@ public string GetEmailForEkipUyeId(int ekipUyeId)
             }
         }
 
+
+        public int GetVarlikId(int bakımId)
+        {
+            try
+            {
+                var varlik = _context.BakimTalep.FirstOrDefault(u => u.TalepId == bakımId);
+
+                if (varlik != null)
+                {
+                    return (int)varlik.VarlikId;
+                }
+                else
+                {
+
+                    return -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Hata oluştu: " + ex.Message);
+                return -1;
+            }
+        }
+
     }
 
 

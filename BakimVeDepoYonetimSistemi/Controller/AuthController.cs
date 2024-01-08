@@ -183,6 +183,26 @@ namespace BakimVeDepoYonetimSistemi.Controller
 
             return Ok(new { Email = kullanici.Mail, Name = kullanici.Ad, Surname = kullanici.Soyad });
         }
+
+
+          [HttpGet("usernamesurnames")]
+    public ActionResult<List<string>> GetUserNamesSurnames()
+    {
+       
+        try
+        {
+            // Kullanıcıların ad ve soyadlarını çekiyoruz (örnek tablo ve sorgu)
+            var users = _userRepository.GetUserNameSurname(); // Örnek tablo adı
+
+
+            return Ok(users); // Başarılı cevap
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Internal server error: {ex.Message}"); // Hata durumunda 500 hatası
+        }
+    }
+
     }
 }
 

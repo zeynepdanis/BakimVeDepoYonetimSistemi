@@ -14,6 +14,8 @@ namespace BakimVeDepoYonetimSistemi.Repositories
         public DbSet<MaintainceState> TalepDurumTable { get; set; }
         public DbSet<Asset>VarlikTable { get; set; }
         public DbSet<WorkForce> IsGucuTable { get; set; }
+        public DbSet<JobOrder> IsEmri { get; set; }
+        public DbSet<JobOrderState> IsEmriDurumTable { get; set; }
 
         public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options)
         {
@@ -35,6 +37,8 @@ namespace BakimVeDepoYonetimSistemi.Repositories
      modelBuilder.Entity<Asset>()
      .HasKey(u => u.VarlikId);
         modelBuilder.Entity<WorkForce>().HasKey(u => u.IsGucuId);
+        modelBuilder.Entity<JobOrder>().HasKey(u => u.IsEmriId);
+        modelBuilder.Entity<JobOrderState>().HasKey(u => u.IsEmriDurumId);
     
 
         }
