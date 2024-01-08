@@ -35,7 +35,7 @@ namespace BakimVeDepoYonetimSistemi.Controller
         {
 
             var createdDate = DateTime.Now;
-            var state = "DevamEdiyor";
+            var state = "Talep Beklemede";
 
             var stateId = _bakimTalepRepository.GetStateId(state);
             var assetId = (int)maintainceRequest.asset.VarlikId;
